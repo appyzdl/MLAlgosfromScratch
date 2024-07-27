@@ -22,7 +22,8 @@ class DecisionTree:
         self.root = None
 
     def fit(self, X, y):
-        self.n_features = X.shape[1] if not self.n_features else min(X.shape[1], self.n_features)
+        self.n_features = X.shape[1] if not self.n_features else min(
+            X.shape[1], self.n_features)
         self.root = self._grow_tree(X, y)
 
     def _grow_tree(self, X, y, depth=0):
@@ -122,3 +123,7 @@ class DecisionTree:
         if x[node.feature] <= node.threshold:
             return self._traverse_tree(x, node.left)
         return self._traverse_tree(x, node.right)
+
+
+# it takes it like a class instead of a module
+DecisionTree = DecisionTree
